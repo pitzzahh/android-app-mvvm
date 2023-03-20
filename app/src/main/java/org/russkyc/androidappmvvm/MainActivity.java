@@ -26,11 +26,8 @@ public class MainActivity extends NoActionBarActivity {
         SugarContext.init(this); // init db
 
         new Account("dXNlcm5hbWU=", "cGFzcw==").save();
-    }
 
-    @Override
-    protected void onDestroy() {
-        super.onDestroy();
-        SugarContext.terminate(); // terminate db on destroy.
+        // terminate db on exit
+        Runtime.getRuntime().addShutdownHook(new Thread(SugarContext::terminate));
     }
 }
