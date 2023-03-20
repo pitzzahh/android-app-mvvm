@@ -1,0 +1,110 @@
+<?xml version="1.0" encoding="utf-8"?>
+<layout>
+    <data>
+        <variable
+            name="ViewModel"
+            type="org.russkyc.androidappmvvm.viewmodels.MainViewModel" />
+    </data>
+    <androidx.constraintlayout.widget.ConstraintLayout xmlns:android="http://schemas.android.com/apk/res/android"
+        xmlns:app="http://schemas.android.com/apk/res-auto"
+        xmlns:tools="http://schemas.android.com/tools"
+        android:layout_width="match_parent"
+        android:layout_height="match_parent"
+        tools:ignore="HardcodedText"
+        tools:context=".MainActivity"
+        android:background="#0b5592">
+
+        <ImageView
+            android:layout_width="wrap_content"
+            android:layout_height="700px"
+            android:src="@drawable/bg"
+            app:layout_constraintBottom_toBottomOf="parent"
+            app:layout_constraintEnd_toEndOf="parent"
+            app:layout_constraintStart_toStartOf="parent" />
+
+        <androidx.constraintlayout.widget.ConstraintLayout
+            android:id="@+id/constraintLayout"
+            android:layout_width="260dp"
+            android:layout_height="wrap_content"
+            android:layout_marginTop="-60dp"
+            app:layout_constraintBottom_toBottomOf="parent"
+            app:layout_constraintEnd_toEndOf="parent"
+            app:layout_constraintStart_toStartOf="parent"
+            app:layout_constraintTop_toTopOf="parent">
+
+            <ImageView
+                android:id="@+id/labelTitle"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:src="@drawable/onesti_logo"
+                app:layout_constraintEnd_toEndOf="parent"
+                app:layout_constraintStart_toStartOf="parent"
+                app:layout_constraintTop_toTopOf="parent" />
+
+            <EditText
+                android:id="@+id/inputStudentId"
+                android:layout_width="fill_parent"
+                android:layout_height="wrap_content"
+                android:layout_marginTop="20dp"
+                android:background="@drawable/rounded_textbox_background"
+                android:hint="Student ID / Microsoft Account"
+                android:importantForAutofill="noExcludeDescendants"
+                android:text="@={ViewModel.Username}"
+                android:inputType="text"
+                android:textColor="@color/white"
+                android:textColorHint="#ABB6F1"
+                app:layout_constraintBottom_toTopOf="@id/inputPassword"
+                app:layout_constraintEnd_toEndOf="parent"
+                app:layout_constraintStart_toStartOf="parent"
+                app:layout_constraintTop_toBottomOf="@id/labelTitle" />
+            <EditText
+                android:id="@+id/inputPassword"
+                android:layout_width="fill_parent"
+                android:layout_height="wrap_content"
+                android:layout_marginTop="10dp"
+                android:background="@drawable/rounded_textbox_background"
+                android:hint="Password"
+                android:importantForAutofill="noExcludeDescendants"
+                android:text="@={ViewModel.Password}"
+                android:inputType="textPassword"
+                android:textColor="@color/white"
+                android:padding="15dp"
+                android:textColorHint="#ABB6F1"
+                app:layout_constraintBottom_toTopOf="@id/btnLogin"
+                app:layout_constraintEnd_toEndOf="parent"
+                app:layout_constraintStart_toStartOf="parent"
+                app:layout_constraintTop_toBottomOf="@id/inputStudentId" />
+
+            <android.widget.Button
+                android:id="@+id/btnLogin"
+                android:layout_width="fill_parent"
+                android:layout_height="wrap_content"
+                android:layout_marginTop="35dp"
+                android:background="@drawable/button_primary"
+                android:text="Log In"
+                android:onClick="@{ViewModel::onLogin}"
+                android:textColor="@color/rounded_button_inverted_text"
+                android:textStyle="bold"
+                app:layout_constraintBottom_toTopOf="@id/lblStatus"
+                app:layout_constraintEnd_toEndOf="parent"
+                app:layout_constraintStart_toStartOf="parent"
+                app:layout_constraintTop_toBottomOf="@id/inputPassword" />
+
+
+            <TextView
+                android:id="@+id/lblStatus"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_marginTop="20dp"
+                android:textAlignment="center"
+                android:textColor="#ffffff"
+                android:textSize="7pt"
+                app:flow_wrapMode="aligned"
+                android:text="@={ViewModel.Status}"
+                app:layout_constraintBottom_toBottomOf="parent"
+                app:layout_constraintEnd_toEndOf="parent"
+                app:layout_constraintStart_toStartOf="parent"
+                app:layout_constraintTop_toBottomOf="@id/btnLogin" />
+        </androidx.constraintlayout.widget.ConstraintLayout>
+    </androidx.constraintlayout.widget.ConstraintLayout>
+</layout>
