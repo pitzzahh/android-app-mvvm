@@ -36,7 +36,7 @@ public class Account extends SugarRecord {
         if (this == o) return true;
         if (o == null || getClass() != o.getClass()) return false;
         Account account = (Account) o;
-        return username.equals(account.username) && password.equals(account.password);
+        return Objects.equals(username, account.username) && Objects.equals(password, account.password);
     }
 
     @Override
