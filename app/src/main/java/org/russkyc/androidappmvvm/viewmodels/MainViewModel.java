@@ -37,6 +37,7 @@ public class MainViewModel extends ViewModel {
 
                 Username.set("");
                 Password.set("");
+                Status.set("");
 
                 // Open Display Activity
                 view.getContext()
